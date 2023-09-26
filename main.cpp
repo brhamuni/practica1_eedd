@@ -17,7 +17,7 @@ int main() {
         while (i<tam){
             bool encontrado=false;
             int numero = rand()%100000+67700;
-
+            
             for (int j = 0; j < i && !encontrado; j++) {
                 if (vector[j] == numero){
                     encontrado= true;
