@@ -10,10 +10,9 @@ class VDinamico {
 private:
     T *vector;
     unsigned long int tam;
-    bool tamlog;
 
-public
-    VDinamico();
+public:
+
     VDinamico(unsigned long int n);
     VDinamico(VDinamico &orig);
     VDinamico (const VDinamico &orig, unsigned int posicionInicial, unsigned int numElementos);
@@ -23,10 +22,6 @@ public
     void ordena();
     void ordenaRev();
 };
-
-template<typename T>
-VDinamico<T>::VDinamico() : tam(1),tam_logico(0),vector(nullptr){}
-
 
 /**
  * @brief Ordena el vector de menor a mayor con la funcion sort

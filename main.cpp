@@ -9,14 +9,14 @@
  */
 
 int main() {
-    int tam=1000;
+    const int tam=10000;
     VDinamico<int> vector(tam);
     int i=0;
 
     try {
         while (i<tam){
             bool encontrado=false;
-            int numero = rand()%100000+67700;
+            int numero = rand()%100000+1;
             
             for (int j = 0; j < i && !encontrado; j++) {
                 if (vector[j] == numero){
@@ -26,7 +26,7 @@ int main() {
 
             if(!encontrado){
                 vector[i]=numero;
-                std::cout<<std::endl<< "i ="<< i;
+                std::cout<<std::endl<< "Nuevo añadido, i ="<< i+1;
                 std::cout<<" ,numero: "<<vector[i]<<std::endl;
                 i++;
             }
