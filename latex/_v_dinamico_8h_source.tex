@@ -1,0 +1,102 @@
+\hypertarget{_v_dinamico_8h_source}{}\doxysection{VDinamico.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PRACTICA\_1\_VDINAMICO\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PRACTICA\_1\_VDINAMICO\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_v_dinamico}{VDinamico}} \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     T *vector;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} tam;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_v_dinamico_ad822cf9ab8d09979a5bdb44fcdb4cbb7}{VDinamico}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_v_dinamico_ad822cf9ab8d09979a5bdb44fcdb4cbb7}{VDinamico}}(\mbox{\hyperlink{class_v_dinamico}{VDinamico}} \&orig);}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_v_dinamico_ad822cf9ab8d09979a5bdb44fcdb4cbb7}{VDinamico}} (\textcolor{keyword}{const} \mbox{\hyperlink{class_v_dinamico}{VDinamico}} \&orig, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} posicionInicial, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} numElementos);}
+\DoxyCodeLine{18     T \&\mbox{\hyperlink{class_v_dinamico_aa126c5b43adbc1fc0cd3893963a7e9c2}{operator[]}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} pos);}
+\DoxyCodeLine{19     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_v_dinamico_a811145b1f245e6dbda131423adee940f}{\string~VDinamico}}();}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_v_dinamico}{VDinamico<T>}} \&\mbox{\hyperlink{class_v_dinamico_a6e1a41ffd0887a24897bbb357f5b735c}{operator=}}(\mbox{\hyperlink{class_v_dinamico}{VDinamico}} \&orig);}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_v_dinamico_a5b6983c2bb27c2655d6d15312e4038ba}{ordena}}();}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_v_dinamico_ac9cceb4bc1f91c1e378052e631234f95}{ordenaRev}}();}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{30 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{31 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_v_dinamico_a5b6983c2bb27c2655d6d15312e4038ba}{VDinamico<T>::ordena}}() \{}
+\DoxyCodeLine{32     std::sort(vector,vector+tam);}
+\DoxyCodeLine{33 \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{41 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{42 \textcolor{keywordtype}{void} \mbox{\hyperlink{class_v_dinamico_ac9cceb4bc1f91c1e378052e631234f95}{VDinamico<T>::ordenaRev}}() \{}
+\DoxyCodeLine{43     std::sort(vector,vector+tam);}
+\DoxyCodeLine{44     T aux;}
+\DoxyCodeLine{45     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<tam/2;i++)\{}
+\DoxyCodeLine{46         aux=vector[i];}
+\DoxyCodeLine{47         vector[i]=vector[tam-\/i-\/1];}
+\DoxyCodeLine{48         vector[tam-\/i-\/1]=aux;}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{60 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{61 \mbox{\hyperlink{class_v_dinamico_ad822cf9ab8d09979a5bdb44fcdb4cbb7}{VDinamico<T>::VDinamico}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_v_dinamico}{VDinamico<T>}} \&orig, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} posicionInicial, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} numElementos) \{}
+\DoxyCodeLine{62     \textcolor{keywordflow}{if}(posicionInicial>orig.tam)}
+\DoxyCodeLine{63         \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}La posicion inicial no puede ser mayor que el numero de elementos"{}});}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keyword}{delete} [] vector;}
+\DoxyCodeLine{66     vector = \textcolor{keyword}{new} T [tam=numElementos] ;}
+\DoxyCodeLine{67     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<tam;i++)\{}
+\DoxyCodeLine{68         vector[i]=orig.vector[posicionInicial+i];}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{79 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{80 \mbox{\hyperlink{class_v_dinamico}{VDinamico<T>}} \&\mbox{\hyperlink{class_v_dinamico_a6e1a41ffd0887a24897bbb357f5b735c}{VDinamico<T>::operator=}}(\mbox{\hyperlink{class_v_dinamico}{VDinamico<T>}} \&orig) \{}
+\DoxyCodeLine{81     \textcolor{keywordflow}{if} (\textcolor{keyword}{this}!=\&orig)\{}
+\DoxyCodeLine{82         \textcolor{keyword}{delete} [] vector;}
+\DoxyCodeLine{83         tam=orig.tam;}
+\DoxyCodeLine{84         vector =\textcolor{keyword}{new} T [tam];}
+\DoxyCodeLine{85         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0;i<orig.tam;i++)\{}
+\DoxyCodeLine{86             vector[i]=orig.vector[i];}
+\DoxyCodeLine{87         \}}
+\DoxyCodeLine{88         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90 \}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{98 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{99 \mbox{\hyperlink{class_v_dinamico_ad822cf9ab8d09979a5bdb44fcdb4cbb7}{VDinamico<T>::VDinamico}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} n) \{}
+\DoxyCodeLine{100     tam=n;}
+\DoxyCodeLine{101     vector =\textcolor{keyword}{new} \textcolor{keywordtype}{int}[tam];}
+\DoxyCodeLine{102 \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{111 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{112 T \&\mbox{\hyperlink{class_v_dinamico_aa126c5b43adbc1fc0cd3893963a7e9c2}{VDinamico<T>::operator[]}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} pos)  \{}
+\DoxyCodeLine{113     \textcolor{keywordflow}{if}(pos>=tam) \{}
+\DoxyCodeLine{114         \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}La posicion del vector no puede ser mayor que el tamaño"{}});}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116     \textcolor{keywordflow}{return} vector[pos];}
+\DoxyCodeLine{117 \}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{124 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{125 \mbox{\hyperlink{class_v_dinamico_a811145b1f245e6dbda131423adee940f}{VDinamico<T>::\string~VDinamico}}()\{}
+\DoxyCodeLine{126     \textcolor{keyword}{delete} [] vector;}
+\DoxyCodeLine{127 \}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{134 \textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{135 \mbox{\hyperlink{class_v_dinamico_ad822cf9ab8d09979a5bdb44fcdb4cbb7}{VDinamico<T>::VDinamico}}(\mbox{\hyperlink{class_v_dinamico}{VDinamico<T>}} \&orig) \{}
+\DoxyCodeLine{136     \textcolor{keyword}{delete} [] vector;}
+\DoxyCodeLine{137     tam=orig.tam;}
+\DoxyCodeLine{138     vector =\textcolor{keyword}{new} T [tam];}
+\DoxyCodeLine{139     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0;i<orig.tam;i++)\{}
+\DoxyCodeLine{140         vector[i]=orig.vector[i];}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142 \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PRACTICA\_1\_VDINAMICO\_H}}
+
+\end{DoxyCode}
