@@ -86,8 +86,8 @@ VDinamico<T> &VDinamico<T>::operator=(VDinamico<T> &orig) {
         for (int i=0;i<orig.tam;i++){
             vector[i]=orig.vector[i];
         }
-        return *this;
     }
+    return *this;
 }
 
 /**
